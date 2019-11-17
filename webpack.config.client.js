@@ -1,5 +1,4 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
@@ -12,11 +11,19 @@ const baseConfig = require('./webpack.config.base');
 
 module.exports = merge(baseConfig, {
   mode: 'production',
-  entry: './src/index.js',
+  entry: './src/client.js',
   output: {
-    filename: 'bundle.[hash].js',
+    filename: 'bundle.[chunkhash].js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+      }
+    ]
   },
   optimization: {
     minimizer: [
@@ -41,14 +48,18 @@ module.exports = merge(baseConfig, {
       }
     }),
     new StatsWriterPlugin({
+      // filename: 'stats.json',
       stats: {
         all: false,
         assets: true
       }
     }),
     new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
       filename: 'styles.[chunkhash].css'
     })
   ],
+
   devtool: 'inline-source-map'
 });
