@@ -9,7 +9,7 @@ const Todo = ({ todos, fetchTodos }) => {
 
   useEffect(()=>{
     fetchTodos();
-  });
+  }, []);
 
   return(
     <div>
@@ -29,6 +29,13 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {
-  fetchTodos,
-})(Todo);
+const loadData = (store, param) => {
+  return store.dispatch(fetchTodos(param));
+};
+
+export default {
+  component: connect(mapStateToProps, {
+    fetchTodos,
+  })(Todo),
+  loadData,
+};

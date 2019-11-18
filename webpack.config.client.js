@@ -48,15 +48,12 @@ module.exports = merge(baseConfig, {
       }
     }),
     new StatsWriterPlugin({
-      // filename: 'stats.json',
       stats: {
         all: false,
         assets: true
       }
     }),
     new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
       filename: 'styles.[chunkhash].css'
     })
   ],

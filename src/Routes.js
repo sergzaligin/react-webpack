@@ -7,23 +7,23 @@ import NotFound from './pages/NotFound';
 
 export default [
   {
-    component: App,
+    ...App,
     routes: [
       {
         path: "/",
         exact: true,
-        component: Home,
+        ...Home,
       },
       {
         path: "/about",
-        component: About,
+        ...About,
       },
       {
         path: "/todo",
-        component: Todo,
+        ...Todo,
       },
       {
-        component: NotFound,
+        ...NotFound,
       },
     ]
   }

@@ -11,7 +11,8 @@ const About = ({ data, setHello }) => {
       <h1>About page</h1>
       <Link to="/">Home</Link>
       <br />
-      { data } <br />
+      { data }
+      <br />
       <button onClick={ () => setHello('newData') } >Click</button>
     </div>
   );
@@ -23,6 +24,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {
-  setHello,
-})(About);
+export default {
+  component: connect(mapStateToProps, {
+    setHello,
+  })(About)
+};
