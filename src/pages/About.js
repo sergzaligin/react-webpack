@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 import { setHello } from '../store/actions';
 
+
+
 const About = ({ data, setHello }) => {
+
+  useEffect(()=>{
+    document.title = 'О сайте';
+  }, []);
+
   return(
     <div>
       <h1>About page</h1>
@@ -27,5 +34,6 @@ const mapStateToProps = (state) => {
 export default {
   component: connect(mapStateToProps, {
     setHello,
-  })(About)
+  })(About),
+  title: 'О сайте',
 };

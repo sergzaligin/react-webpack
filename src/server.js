@@ -19,8 +19,8 @@ app.use(express.static('dist'));
 const renderer = (req, store, context) => {
 
   const routes = matchRoutes(Routes, req.path);
-  const c = routes.map(({ route }) => route.title);
-  console.log('routes', c[1]);
+  const c = routes.map((el) => el);
+  console.log('routes', c[1].route.title);
 
   const content = renderToString(
     <Provider store={ store }>
@@ -37,7 +37,7 @@ const renderer = (req, store, context) => {
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta http-equiv="X-UA-Compatible" content="ie=edge" />
       <link rel="stylesheet" type="text/css" href="/public/${assetsByChunkName.main[0]}" />
-      <title>${c[1]}</title>
+      <title>${c[1].route.title}</title>
     </head>
     <body>
       <div id="root">${content}</div>

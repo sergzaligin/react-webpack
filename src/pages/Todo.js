@@ -10,6 +10,7 @@ const Todo = ({ newtodos, todos, fetchTodos, fetchNewTodos }) => {
   useEffect(()=>{
     fetchTodos();
     fetchNewTodos();
+    document.title = 'Подсказки';
   }, []);
 
   return(
@@ -55,6 +56,7 @@ export default {
     fetchTodos,
     fetchNewTodos,
   })(Todo),
+  title: 'Подсказки',
   loadData: [
     ld,
     ld2,
