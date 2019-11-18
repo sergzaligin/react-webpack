@@ -8,7 +8,7 @@
     "build:spa": "webpack -p --config ./webpack.config.spa.js --mode production",
     "build:client": "webpack -p --config ./webpack.config.client.js --mode production",
     "build:server": "webpack -p --config ./webpack.config.server.js --mode production",
-    "serve": "serve ./dist",
+    "serve": "serve ./dist/public",
     "test": "jest"
   },
   "devDependencies": {

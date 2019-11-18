@@ -1,7 +1,7 @@
 const path = require('path');
 const merge = require('webpack-merge');
 const webpackNodeExternals = require('webpack-node-externals');
-
+//const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const baseConfig = require('./webpack.config.base');
 
 module.exports = merge(baseConfig, {
