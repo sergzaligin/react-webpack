@@ -9,7 +9,7 @@ import '@babel/polyfill';
 
 import Routes from './Routes';
 import store from './store';
-import { assetsByChunkName } from '../dist/stats.json';
+import { assetsByChunkName } from '../dist/public/stats.json';
 
 const app = express();
 
@@ -32,7 +32,7 @@ const renderer = (req, store, context) => {
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-      <link rel="stylesheet" type="text/css" href="/${assetsByChunkName.main[0]}" />
+      <link rel="stylesheet" type="text/css" href="/public/${assetsByChunkName.main[0]}" />
       <title>Document</title>
     </head>
     <body>
@@ -43,7 +43,7 @@ const renderer = (req, store, context) => {
         '\\u003c'
       )}
       </script>
-      <script src="/${assetsByChunkName.main[1]}"></script>
+      <script src="/public/${assetsByChunkName.main[1]}"></script>
     </body>
   </html>`;
 };
