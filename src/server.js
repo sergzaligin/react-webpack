@@ -18,6 +18,10 @@ app.use(express.static('dist'));
 // eslint-disable-next-line no-shadow
 const renderer = (req, store, context) => {
 
+  const routes = matchRoutes(Routes, req.path);
+  const c = routes.map(({ route }) => route.title);
+  console.log('routes', c[1]);
+
   const content = renderToString(
     <Provider store={ store }>
       <StaticRouter location={ req.path } context={ context }>
@@ -33,7 +37,7 @@ const renderer = (req, store, context) => {
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta http-equiv="X-UA-Compatible" content="ie=edge" />
       <link rel="stylesheet" type="text/css" href="/public/${assetsByChunkName.main[0]}" />
-      <title>Document</title>
+      <title>${c[1]}</title>
     </head>
     <body>
       <div id="root">${content}</div>
