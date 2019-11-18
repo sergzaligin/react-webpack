@@ -60,16 +60,25 @@ app.get('*', (req, res) => {
 
   const promises = routes
     .map(({ route }) => {
-      return route.loadData ? route.loadData(store, id) : null;
+
+      if(route.loadData){
+        route.loadData.map((el) => el(store, id));
+      }else{
+        return null;
+      }
+      // return route.loadData ? route.loadData(store, id) : null;
     })
     .map(promise => {
       if (promise) {
-        // eslint-disable-next-line no-unused-vars
+
         return new Promise((resolve, reject) => {
           promise.then(resolve).catch(resolve);
         });
+
       }
+
       return null;
+
     });
 
   Promise.all(promises).then(() => {

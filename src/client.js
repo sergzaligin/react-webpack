@@ -10,7 +10,7 @@ import store from './store';
 
 import App from './App';
 
-ReactDOM.hydrate(
+ReactDOM.render(
     <Provider store={ store } >
       <BrowserRouter>
         <>

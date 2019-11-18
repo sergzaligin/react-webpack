@@ -3,39 +3,60 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 
-import { fetchTodos } from '../store/actions';
+import { fetchTodos, fetchNewTodos } from '../store/actions';
 
-const Todo = ({ todos, fetchTodos }) => {
+const Todo = ({ newtodos, todos, fetchTodos, fetchNewTodos }) => {
 
   useEffect(()=>{
     fetchTodos();
+    fetchNewTodos();
   }, []);
 
   return(
     <div>
       <h1>Todo page</h1>
-      <Link to="/">Home</Link>
+      <div>
+        <div>
+          <Link to="/">Home</Link>
+        </div>
+        <div>
+          <button onClick={ () => fetchTodos() } >Click</button>
+        </div>
+      </div>
+
+      <div>
+      { newtodos.map(newtodo => <p key={ newtodo.id } >{ newtodo.id }. { newtodo.name }</p>) }
+      </div>
       <br />
-      <button onClick={ () => fetchTodos() } >Click</button>
-      <br />
+      <div>
       { todos.map(todo => <p key={ todo.id } >{ todo.id }. { todo.title }</p>) }
+      </div>
     </div>
   );
 };
 
 const mapStateToProps = (state) => {
   return {
-    todos: state.todosPage.todos
+    todos: state.todosPage.todos,
+    newtodos: state.todosPage.newtodos,
   };
 };
 
-const loadData = (store, param) => {
+const ld = (store, param) => {
   return store.dispatch(fetchTodos(param));
+};
+
+const ld2 = (store, param) => {
+  return store.dispatch(fetchNewTodos(param));
 };
 
 export default {
   component: connect(mapStateToProps, {
     fetchTodos,
+    fetchNewTodos,
   })(Todo),
-  loadData,
+  loadData: [
+    ld,
+    ld2,
+  ]
 };

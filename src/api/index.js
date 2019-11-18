@@ -10,4 +10,8 @@ export const todoApi = ({
     return instance.get(`todos`);
   },
 
+  getNewTodos(){
+    return instance.get(`users`);
+  },
+
 });

@@ -1,5 +1,4 @@
-import { SET_HELLO } from './types';
-import { SET_TODOS } from './types';
+import { SET_HELLO, SET_TODOS, SET_NEWTODOS } from './types';
 
 import { todoApi } from '../api/';
 
@@ -17,5 +16,17 @@ export const fetchTodos = () => {
   return async dispatch => {
     const res = await todoApi.getTodos();
     dispatch(setTodos(res.data));
+  };
+};
+
+const setNewTodos = payload => ({
+  type: SET_NEWTODOS,
+  payload,
+});
+
+export const fetchNewTodos = () => {
+  return async dispatch => {
+    const res = await todoApi.getNewTodos();
+    dispatch(setNewTodos(res.data));
   };
 };

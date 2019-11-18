@@ -1,7 +1,8 @@
-import { SET_TODOS } from '../types';
+import { SET_TODOS, SET_NEWTODOS } from '../types';
 
 const initialState = {
   todos: [],
+  newtodos: [],
 };
 
 export default (state = initialState, action) => {
@@ -11,6 +12,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         todos: action.payload,
+      }
+    case SET_NEWTODOS:
+      return {
+        ...state,
+        newtodos: action.payload,
       }
     default:
       return state;
