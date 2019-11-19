@@ -4,17 +4,31 @@ import { Field } from 'redux-form';
 const LoginForm = (props) => {
 
   return (
-      <form onSubmit={ props.handleSubmit } >
+    <form onSubmit={ props.handleSubmit } >
 
       <div>
         <Field
-          placeholder={ "Post text" }
-          component={ 'textarea' }
-          name={ "post" }
+          placeholder={ "Nickname" }
+          component="input"
+          type="text"
+          name={ "nickname" }
         />
+        <Field
+          placeholder={ "email" }
+          component="input"
+          type="email"
+          name={ "email" }
+        />
+        <Field
+          placeholder={ "Password" }
+          component="input"
+          type="password"
+          name={ "password" }
+        />
+
       </div>
       <div>
-        <button>Add post</button>
+        <button>Войти</button>
       </div>
 
      </form>

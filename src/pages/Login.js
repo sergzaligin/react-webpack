@@ -14,13 +14,21 @@ const Login = () => {
     document.title = 'Login';
   }, []);
 
-  const onSubmit = ({ post }) => {
-    console.log('MyPostsForm', post);
+  const onSubmit = ({ nickname, email, password }) => {
+
+    const User = {
+      nickname,
+      email,
+      password,
+    };
+
+    console.log('Login', User);
+
   };
 
   return(
     <div>
-      <h1>Админ панель - создать пост</h1>
+      <h1>Login</h1>
       <Link to="/admin">Home</Link>
       <br />
       <LoginReduxForm onSubmit={ onSubmit } />
