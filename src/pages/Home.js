@@ -10,6 +10,8 @@ const Home = () => {
   return(
     <div>
       <h1>Home page</h1>
+      <Link to="/admin">Admin</Link>
+      <br />
       <Link to="/about">About</Link>
       <br />
       <Link to="/todo">Todo</Link>

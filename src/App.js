@@ -1,13 +1,15 @@
 import React from 'react';
 import { renderRoutes } from 'react-router-config';
 
+import Layout from './hoc/MainLayout';
+
 import './App.scss';
 
 const App = ({ route }) => {
   return(
-    <div>
+    <Layout>
       { renderRoutes(route.routes) }
-    </div>
+    </Layout>
   );
 }
 

@@ -1,3 +1,9 @@
+// admin
+import AdminHome from './pages/admin/AdminHome';
+import AdminPostList from './pages/admin/posts/AdminPostList';
+import AdminPostCreate from './pages/admin/posts/AdminPostCreate';
+
+// main
 import App from './App';
 import Home from './pages/Home';
 import Todo from './pages/Todo';
@@ -21,6 +27,19 @@ export default [
       {
         path: "/todo",
         ...Todo,
+      },
+      {
+        path: "/admin",
+        exact: true,
+        ...AdminHome,
+      },
+      {
+        path: "/admin/post/list",
+        ...AdminPostList,
+      },
+      {
+        path: "/admin/post/create",
+        ...AdminPostCreate,
       },
       {
         ...NotFound,
