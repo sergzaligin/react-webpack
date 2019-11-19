@@ -2,6 +2,8 @@ import jwtDecode from 'jwt-decode';
 import Cookie from 'cookie';
 import Cookies from 'js-cookie';
 
+import setAuthorizationToken from '../utils/setAuthorizationToken';
+
 import { SET_HELLO, SET_TODOS, SET_NEWTODOS, SET_USER } from './types';
 
 import { todoApi, authApi } from '../api/';
@@ -54,7 +56,8 @@ export const fetchLogin = (email, password, nickname) => {
 
       dispatch(setUser(res.data));
       Cookies.set('jwt-token', res.data.token);
-
+      localStorage.setItem('jwtToken', res.data.token);
+      setAuthorizationToken(res.data.token);
     }else{
 
       console.log('TOKEN IS NOTVALID NEED LOGOUT');

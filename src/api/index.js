@@ -5,7 +5,7 @@ const instance = axios.create({
 });
 
 const instance2 = axios.create({
-  baseURL: 'http://localhost:4445/api/',
+  baseURL: 'http://localhost:4445/api/'
 });
 
 export const todoApi = ({
