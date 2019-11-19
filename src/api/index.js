@@ -23,7 +23,7 @@ export const todoApi = ({
 export const authApi = ({
 
   login(email, password, nickname){
-    return instance.post(`auth/login`, { email, password, nickname });
+    return instance2.post(`auth/login`, { email, password, nickname });
   },
 
 });

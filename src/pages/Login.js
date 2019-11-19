@@ -1,20 +1,23 @@
 import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { reduxForm } from 'redux-form';
 
 import LoginForm from './LoginForm';
 
+import { fetchLogin } from '../store/actions'
+
 const LoginReduxForm = reduxForm({
   form: 'myposts',
 })(LoginForm);
 
-const Login = () => {
+const Login = ({ fetchLogin }) => {
 
   useEffect(()=>{
     document.title = 'Login';
   }, []);
 
-  const onSubmit = ({ nickname, email, password }) => {
+  const onSubmit = ({ email, password, nickname }) => {
 
     const User = {
       nickname,
@@ -23,7 +26,7 @@ const Login = () => {
     };
 
     console.log('Login', User);
-
+    fetchLogin(email, password, nickname);
   };
 
   return(
@@ -36,4 +39,4 @@ const Login = () => {
   );
 };
 
-export default { component: Login, title: 'Login' };
+export default { component: connect(null, { fetchLogin })(Login), title: 'Login' };

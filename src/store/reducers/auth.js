@@ -2,10 +2,7 @@
 import { SET_USER } from '../types';
 
 const initialState = {
-  id: null,
-  rememberMe: null,
-  email: null,
-  nickname: null,
+  token: null,
   isAuth: false,
 };
 
@@ -14,7 +11,7 @@ export default  (state = initialState, action) => {
     case SET_USER:
       return {
         ...state,
-        ...action.data,
+        token: action.payload.token,
         isAuth: true,
       }
     default:
