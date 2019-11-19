@@ -1,4 +1,4 @@
-import { SET_HELLO, SET_TODOS, SET_NEWTODOS } from './types';
+import { SET_HELLO, SET_TODOS, SET_NEWTODOS, SET_USER } from './types';
 
 import { todoApi } from '../api/';
 
@@ -28,5 +28,18 @@ export const fetchNewTodos = () => {
   return async dispatch => {
     const res = await todoApi.getNewTodos();
     dispatch(setNewTodos(res.data));
+  };
+};
+
+const setUser = payload => ({
+  type: SET_USER,
+  payload,
+});
+
+export const fetchLogin = (email, password, nickname) => {
+  return async dispatch => {
+    const res = await authApi.login(email, password, nickname);
+    console.log('AUTH', res);
+    dispatch(setUser(res.data));
   };
 };

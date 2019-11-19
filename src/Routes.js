@@ -8,6 +8,7 @@ import App from './App';
 import Home from './pages/Home';
 import Todo from './pages/Todo';
 import About from './pages/About';
+import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 
 
@@ -19,6 +20,10 @@ export default [
         path: "/",
         exact: true,
         ...Home,
+      },
+      {
+        path: "/login",
+        ...Login,
       },
       {
         path: "/about",
