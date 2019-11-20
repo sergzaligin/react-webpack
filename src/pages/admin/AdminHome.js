@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom';
+
+import Layout  from '../../hoc/AdminLayout';
 
 const AdminHome = () => {
 
@@ -7,16 +10,22 @@ const AdminHome = () => {
     document.title = 'Админ панель - главная страница';
   }, []);
 
+
   return(
-    <div>
-      <h1>Админ панель - главная страница</h1>
-      <Link to="/">Home</Link>
-      <br />
-      <Link to="/admin/post/create">Post create</Link>
-      <br />
-      <Link to="/admin/post/list">Post list</Link>
-    </div>
+    <Layout>
+      <div>
+        <h1>Админ панель - главная страница</h1>
+        <Link to="/">Home</Link>
+        <br />
+        <Link to="/admin/post/create">Post create</Link>
+        <br />
+        <Link to="/admin/post/list">Post list</Link>
+      </div>
+    </Layout>
   );
+
+
+
 };
 
-export default { component: AdminHome, title: 'Админ панель - главная страница' };
+export default { component: connect(null, {})(AdminHome), title: 'Админ панель - главная страница' };

@@ -6,6 +6,7 @@ import Layout from './hoc/MainLayout';
 import './App.scss';
 
 const App = ({ route }) => {
+
   return(
     <Layout>
       { renderRoutes(route.routes) }

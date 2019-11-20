@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import './Layout.scss';
 
@@ -8,7 +10,14 @@ import Footer from '../../components/common/layout/Admin/Footer';
 
 class Layout extends Component{
 
+
+
   render(){
+
+    if(!this.props.isAuth){
+      return <Redirect to="/" />;
+    }
+
     return (
       <div className="wrapper" >
         <Header />
@@ -24,4 +33,10 @@ class Layout extends Component{
 
 }
 
-export default Layout;
+const mapStateToProps = (state) => {
+  return {
+    isAuth: state.auth.isAuth
+  };
+};
+
+export default connect(mapStateToProps, {})(Layout);
