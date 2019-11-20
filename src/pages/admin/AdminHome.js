@@ -12,7 +12,7 @@ const AdminHome = () => {
 
 
   return(
-    <Layout>
+
       <div>
         <h1>Админ панель - главная страница</h1>
         <Link to="/">Home</Link>
@@ -21,7 +21,7 @@ const AdminHome = () => {
         <br />
         <Link to="/admin/post/list">Post list</Link>
       </div>
-    </Layout>
+
   );
 
 

@@ -30,25 +30,20 @@ import App from './App';
     // }
 
 
-const cookieStr = process.browser
-? document.cookie
-: this.app.context.req.headers.cookie;
-const cookies = Cookie.parse(cookieStr || '') || {};
-const token = cookies['jwt-token'];
+// const cookieStr = process.browser
+// ? document.cookie
+// : this.app.context.req.headers.cookie;
+// const cookies = Cookie.parse(cookieStr || '') || {};
+// const token = cookies['jwt-token'];
 // console.log('token cookie', token);
 
 
-// if(localStorage.jwtToken){
-//   setAuthorizationToken(localStorage.jwtToken);
-//   const jwtData = jwtDecode(localStorage.jwtToken) || {};
-//   store.dispatch(setUser(jwtData));
-// }
-
-if(token){
-  setAuthorizationToken(token);
-  const jwtData = jwtDecode(token) || {};
+if(localStorage.jwtToken){
+  setAuthorizationToken(localStorage.jwtToken);
+  const jwtData = jwtDecode(localStorage.jwtToken) || {};
   store.dispatch(setUser(jwtData));
 }
+
 
 //console.log('localStorage.jwtToken', localStorage.jwtToken);
 

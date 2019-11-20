@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+import PostPrev from '../components/Post/PostPrev/PostPrev';
+
 const Home = () => {
 
   useEffect(()=>{
@@ -17,6 +19,12 @@ const Home = () => {
       <Link to="/login">Login</Link>
       <br />
       <Link to="/todo">Todo</Link>
+      <div>
+        <h1>Список постов</h1>
+        <div>
+          <PostPrev />
+        </div>
+      </div>
     </div>
   );
 };
