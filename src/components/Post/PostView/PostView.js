@@ -1,13 +1,10 @@
 import React, { useEffect } from 'react';
 
-const PostView = () => {
-
-  useEffect(()=>{
-    document.title = 'Просмотр поста';
-  }, []);
-
+const PostView = ({ postView }) => {
   return (
-    <div>Пост по ид.</div>
+    <div>
+      <h1>{ postView.title }</h1>
+    </div>
   );
 };
 

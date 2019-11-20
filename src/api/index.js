@@ -27,3 +27,14 @@ export const authApi = ({
   },
 
 });
+
+
+export const postsApi = ({
+
+  getPostsPrev(){
+    return instance2.get(`article/list`);
+  },
+  getPostById(id){
+    return instance2.get(`article/${ id }`);
+  },
+});

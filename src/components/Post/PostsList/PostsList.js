@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const PostPrev = ({ postsPrev }) => {
+const PostsList = ({ postsPrev }) => {
   return (
     <div>
-      <h2>Анонс постов.</h2>
+      <h2>Список постов.</h2>
       {
         postsPrev.map(post => {
           return (
@@ -18,4 +18,4 @@ const PostPrev = ({ postsPrev }) => {
   );
 };
 
-export default PostPrev;
+export default PostsList;

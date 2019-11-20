@@ -4,9 +4,16 @@ import Cookies from 'js-cookie';
 
 import setAuthorizationToken from '../utils/setAuthorizationToken';
 
-import { SET_HELLO, SET_TODOS, SET_NEWTODOS, SET_USER } from './types';
+import {
+  SET_HELLO,
+  SET_TODOS,
+  SET_NEWTODOS,
+  SET_USER,
+  SET_POSTS_PREV,
+  SET_POST_VIEW
+} from './types';
 
-import { todoApi, authApi } from '../api/';
+import { todoApi, authApi, postsApi } from '../api/';
 
 export const setHello = payload => ({
   type: SET_HELLO,
@@ -99,3 +106,28 @@ function isJwtValid(token){
 
   return (new Date().getTime() / 1000) < expires;
 }
+
+
+const setPostsPrev = payload => ({
+  type: SET_POSTS_PREV,
+  payload,
+});
+
+export const fetchPostsPrev = () => {
+  return async dispatch => {
+    const res = await postsApi.getPostsPrev();
+    dispatch(setPostsPrev(res.data));
+  };
+};
+
+export const setPostView = payload => ({
+  type: SET_POST_VIEW,
+  payload,
+});
+
+export const fetchPostView = (id) => {
+  return async dispatch => {
+    const res = await postsApi.getPostById(id);
+    dispatch(setPostView(res.data[0]));
+  };
+};

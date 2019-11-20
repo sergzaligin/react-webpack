@@ -11,6 +11,8 @@ import About from './pages/About';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 
+import Post from './pages/post/Post';
+import PostsListPage from './pages/post/PostsListPage';
 
 export default [
   {
@@ -24,6 +26,16 @@ export default [
       {
         path: "/login",
         ...Login,
+      },
+      {
+        path: "/post/list",
+        exact: true,
+        ...PostsListPage,
+      },
+      {
+        path: "/post/:id",
+        exact: true,
+        ...Post,
       },
       {
         path: "/about",

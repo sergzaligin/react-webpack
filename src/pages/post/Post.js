@@ -1,15 +1,24 @@
 import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 
 import PostView from '../../components/Post/PostView/PostView';
+import { fetchPostView } from '../../store/actions';
 
-const Post = () => {
+const Post = (props) => {
 
-  useEffect(()=>{
+  useEffect(() => {
     document.title = 'Просмотр поста';
+    props.fetchPostView(props.match.params.id);
   }, []);
 
-  return <PostView />;
+  return <PostView postView={ props.postView } />;
 
 };
 
-export default { component: Post, title: 'Просмотр поста' };
+const mapStateToProps = (state) => {
+  return {
+    postView: state.posts.postView,
+  };
+};
+
+export default { component: connect(mapStateToProps, { fetchPostView })(Post), title: 'Просмотр поста' };
