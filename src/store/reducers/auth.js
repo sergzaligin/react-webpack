@@ -1,8 +1,9 @@
+import is from 'is_js';
 
 import { SET_USER } from '../types';
 
 const initialState = {
-  token: null,
+  user: null,
   isAuth: false,
 };
 
@@ -11,8 +12,8 @@ export default  (state = initialState, action) => {
     case SET_USER:
       return {
         ...state,
-        token: action.payload.token,
-        isAuth: true,
+        user: { ...action.payload },
+        isAuth: !is.empty(action.payload),
       }
     default:
       return state;

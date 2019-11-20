@@ -37,7 +37,7 @@ export const fetchNewTodos = () => {
   };
 };
 
-const setUser = payload => ({
+export const setUser = payload => ({
   type: SET_USER,
   payload,
 });
@@ -49,12 +49,12 @@ export const fetchLogin = (email, password, nickname) => {
     const res = await authApi.login(email, password, nickname);
 
     //console.log('AUTH', res);
-    //const jwtData = jwtDecode(res.data.token) || {};
+
     //console.log('DATA jwt ===>', jwtData);
 
     if(isJwtValid(res.data.token)){
-
-      dispatch(setUser(res.data));
+      const jwtData = jwtDecode(res.data.token) || {};
+      dispatch(setUser(jwtData));
       Cookies.set('jwt-token', res.data.token);
       localStorage.setItem('jwtToken', res.data.token);
       setAuthorizationToken(res.data.token);
