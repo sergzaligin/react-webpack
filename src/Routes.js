@@ -1,3 +1,6 @@
+import store from './store';
+
+
 // admin
 import AdminHome from './pages/admin/AdminHome';
 import AdminPostList from './pages/admin/posts/AdminPostList';
@@ -14,9 +17,11 @@ import NotFound from './pages/NotFound';
 import Post from './pages/post/Post';
 import PostsListPage from './pages/post/PostsListPage';
 
+// console.log('store.getState().auth.isAuth', store.getState().auth.isAuth);
+
 export default [
   {
-    ...App,
+     ...App,
     routes: [
       {
         path: "/",
@@ -26,6 +31,14 @@ export default [
       {
         path: "/login",
         ...Login,
+      },
+      {
+        path: "/about",
+        ...About,
+      },
+      {
+        path: "/todo",
+        ...Todo,
       },
       {
         path: "/post/list",
@@ -38,16 +51,7 @@ export default [
         ...Post,
       },
       {
-        path: "/about",
-        ...About,
-      },
-      {
-        path: "/todo",
-        ...Todo,
-      },
-      {
         path: "/admin",
-        exact: true,
         ...AdminHome,
       },
       {
@@ -58,9 +62,6 @@ export default [
         path: "/admin/post/create",
         ...AdminPostCreate,
       },
-      {
-        ...NotFound,
-      },
     ]
-  }
+  },
 ]

@@ -3,17 +3,20 @@ import { Link } from 'react-router-dom';
 import { fetchPostsPrev } from '../store/actions';
 import { connect } from 'react-redux';
 
+
 import PostPrev from '../components/Post/PostPrev/PostPrev';
 
-const Home = ({ postsPrev, fetchPostsPrev }) => {
+const Home = (props) => {
 
   useEffect(()=>{
     document.title = 'Главная страница';
-    fetchPostsPrev();
+    props.fetchPostsPrev();
   }, []);
 
   return(
+
     <div>
+
       <h1>Home page</h1>
       <Link to="/admin">Админка</Link>
       <br />
@@ -26,7 +29,7 @@ const Home = ({ postsPrev, fetchPostsPrev }) => {
       <Link to="/post/list">Список постов</Link>
       <div>
         <div>
-          <PostPrev postsPrev={postsPrev} />
+          <PostPrev postsPrev={props.postsPrev} />
         </div>
       </div>
     </div>
