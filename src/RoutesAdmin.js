@@ -17,23 +17,6 @@ export default [
     ...App,
     routes: [
       {
-        path: "/",
-        exact: true,
-        ...Home,
-      },
-      {
-        path: "/login",
-        ...Login,
-      },
-      {
-        path: "/about",
-        ...About,
-      },
-      {
-        path: "/todo",
-        ...Todo,
-      },
-      {
         path: "/admin",
         exact: true,
         ...AdminHome,

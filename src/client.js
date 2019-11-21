@@ -13,6 +13,8 @@ import setAuthorizationToken from './utils/setAuthorizationToken';
 import { setUser } from './store/actions';
 
 import Routes from './Routes';
+import RoutesAdmin from './RoutesAdmin';
+
 import store from './store';
 
 import App from './App';

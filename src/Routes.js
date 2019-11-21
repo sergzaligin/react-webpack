@@ -53,14 +53,19 @@ export default [
       {
         path: "/admin",
         ...AdminHome,
+        routes: [
+            {
+              path: "/admin/post/list",
+              ...AdminPostList,
+            },
+            {
+              path: "/admin/post/create",
+              ...AdminPostCreate,
+            },
+        ]
       },
       {
-        path: "/admin/post/list",
-        ...AdminPostList,
-      },
-      {
-        path: "/admin/post/create",
-        ...AdminPostCreate,
+        ...NotFound,
       },
     ]
   },

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { reduxForm } from 'redux-form';
-
+// import WithAuth  from '../../../../hoc';
 import AdminPostCreateForm from './AdminPostCreateForm';
 
 const MyPostsReduxForm = reduxForm({
@@ -19,12 +19,14 @@ const AdminPostCreate = () => {
   };
 
   return(
-    <div>
-      <h1>Админ панель - создать пост</h1>
-      <Link to="/admin">Home</Link>
-      <br />
-      <MyPostsReduxForm onSubmit={ onSubmit } />
-    </div>
+
+      <div>
+        <h1>Админ панель - создать пост</h1>
+        <Link to="/admin">Home</Link>
+        <br />
+        <MyPostsReduxForm onSubmit={ onSubmit } />
+      </div>
+
   );
 };
 

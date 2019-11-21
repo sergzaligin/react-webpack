@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+// import WithAuth  from '../../../hoc';
+
 const AdminPostList = () => {
 
   useEffect(()=>{
@@ -8,11 +10,13 @@ const AdminPostList = () => {
   }, []);
 
   return(
-    <div>
-      <h1>Админ панель - список постов</h1>
-      <Link to="/admin">Home</Link>
-      <br />
-    </div>
+
+      <div>
+        <h1>Админ панель - список постов</h1>
+        <Link to="/admin">Home</Link>
+        <br />
+      </div>
+
   );
 };
 
