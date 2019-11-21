@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import serialize from 'serialize-javascript';
 import '@babel/polyfill';
 
-import Routes from './Routes';
+import Routes from './routes';
 import store from './store';
 import { assetsByChunkName } from '../dist/public/stats.json';
 

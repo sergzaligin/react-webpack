@@ -18,7 +18,7 @@ const Home = (props) => {
     <div>
 
       <h1>Home page</h1>
-      <Link to="/admin">Админка</Link>
+      <Link to="/admin/dashboard">Админка</Link>
       <br />
       <Link to="/about">О сайте</Link>
       <br />
