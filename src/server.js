@@ -6,6 +6,7 @@ import express from 'express';
 import { Provider } from 'react-redux';
 import serialize from 'serialize-javascript';
 import '@babel/polyfill';
+import cors from 'cors';
 
 import Routes from './routes';
 import store from './store';
@@ -14,7 +15,7 @@ import { assetsByChunkName } from '../dist/public/stats.json';
 const app = express();
 
 app.use(express.static('dist'));
-
+app.use(cors());
 // eslint-disable-next-line no-shadow
 const renderer = (req, store, context) => {
 
