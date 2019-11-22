@@ -1,14 +1,24 @@
 import axios from 'axios';
-import store from '../store'
+import store from '../store';
+import Cookie from 'cookie';
+import Cookies from 'js-cookie';
+
+const cookieStr = process.browser
+? document.cookie
+: this.app.context.req.headers.cookie;
+const cookies = Cookie.parse(cookieStr || '') || {};
+const token = cookies['jwt-token'];
+
 
 const instance = axios.create({
   baseURL: 'https://jsonplaceholder.typicode.com/',
 });
 
+
 const instance2 = axios.create({
   baseURL: 'http://localhost:4445/api/',
   headers: {
-    "Authorization" : `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZGQzOWQ4NTM4MDZjNDc0OTI4MzQ4NDQiLCJuaWNrbmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5ydSIsInJvbGUiOiJyZWdpc3RlciIsImF2YXRhciI6Ii9hdmF0YXIvbm9hdmF0YXIuanBnIiwic2lnbmF0dXJlIjoiIiwiaWF0IjoxNTc0MzM5MjAzLCJleHAiOjE1NzQzNDI4MDN9.ViDlt2STtKtO3uwGlB6qV859cQGsjQEBnrOJgW0PQSA`,
+    "Authorization" : `${ token }`,
     'Content-Type': 'application/json',
   },
 });

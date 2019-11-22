@@ -1,9 +1,10 @@
 import is from 'is_js';
 
-import { SET_USER } from '../types';
+import { SET_USER, LOGOUT } from '../types';
 
 const initialState = {
   user: null,
+  token: '',
   isAuth: false,
 };
 
@@ -12,8 +13,16 @@ export default  (state = initialState, action) => {
     case SET_USER:
       return {
         ...state,
-        user: { ...action.payload },
-        isAuth: !is.empty(action.payload),
+        user: { ...action.payload.user },
+        token: action.payload.token,
+        isAuth: !is.empty(action.payload.user),
+      }
+      case LOGOUT:
+      return {
+        ...state,
+        user: {},
+        token: '',
+        isAuth: false,
       }
     default:
       return state;

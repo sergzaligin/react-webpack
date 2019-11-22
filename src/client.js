@@ -10,6 +10,7 @@ import Cookie from 'cookie';
 import Cookies from 'js-cookie';
 
 import setAuthorizationToken from './utils/setAuthorizationToken';
+
 import { setUser } from './store/actions';
 
 import Routes from './routes';
@@ -31,24 +32,18 @@ import App from './App';
     // }
 
 
-// const cookieStr = process.browser
-// ? document.cookie
-// : this.app.context.req.headers.cookie;
-// const cookies = Cookie.parse(cookieStr || '') || {};
-// const token = cookies['jwt-token'];
-// console.log('token cookie', token);
+const cookieStr = process.browser
+? document.cookie
+: this.app.context.req.headers.cookie;
+const cookies = Cookie.parse(cookieStr || '') || {};
+const token = cookies['jwt-token'];
+console.log('token cookie', token);
 
-
-if(localStorage.jwtToken){
-  setAuthorizationToken(localStorage.jwtToken);
-  const jwtData = jwtDecode(localStorage.jwtToken) || {};
-  store.dispatch(setUser(jwtData));
+if(token){
+  setAuthorizationToken(token);
+  const jwtData = jwtDecode(token) || {};
+  store.dispatch(setUser({ user: jwtData, token: token }));
 }
-
-
-//console.log('localStorage.jwtToken', localStorage.jwtToken);
-
-
 
 ReactDOM.render(
     <Provider store={ store } >

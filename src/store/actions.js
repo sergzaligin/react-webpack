@@ -10,7 +10,8 @@ import {
   SET_NEWTODOS,
   SET_USER,
   SET_POSTS_PREV,
-  SET_POST_VIEW
+  SET_POST_VIEW,
+  LOGOUT,
 } from './types';
 
 import { todoApi, authApi, postsApi } from '../api/';
@@ -55,26 +56,26 @@ export const fetchLogin = (email, password, nickname) => {
 
     const res = await authApi.login(email, password, nickname);
 
-    //console.log('AUTH', res);
-
-    //console.log('DATA jwt ===>', jwtData);
-
     if(isJwtValid(res.data.token)){
+
       const jwtData = jwtDecode(res.data.token) || {};
-      dispatch(setUser(jwtData));
+      dispatch(setUser({user: jwtData, token: res.data.token}));
       Cookies.set('jwt-token', res.data.token);
-      localStorage.setItem('jwtToken', res.data.token);
+      //localStorage.setItem('jwtToken', res.data.token);
       setAuthorizationToken(res.data.token);
+
     }else{
 
       console.log('TOKEN IS NOTVALID NEED LOGOUT');
-
+      //dispatch(logout());
     }
 
 
   };
 
 };
+
+export const logout = () => ({type: LOGOUT});
 
 function autoLogin(dispatch){
 
